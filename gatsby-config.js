@@ -17,14 +17,14 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `math-exos`,
-        path: `/home/remy/Documents/maquisdoc_depots/math-exos/`,
-        ignore: [`**/\.*`], // ignore files starting with a dot
-      },
-    },
+    //{
+    //  resolve: `gatsby-source-filesystem`,
+    //  options: {
+    //    name: `math-exos`,
+    //    path: `/home/remy/Documents/maquisdoc_depots/math-exos/`,
+    //    ignore: [`**/\.*`], // ignore files starting with a dot
+    //  },
+    //},
     `gatsby-transformer-remark`,
     `gatsby-transformer-csv`,
     `gatsby-plugin-emotion`,
