@@ -11,16 +11,13 @@ export default function Devlopmt({ data }) {
       <LayoutDvlpt>
         <div>
           <p>
-            Comme enseignant de mathématiques, j'ai utilisé en classe des documents que j'ai rédigé moi même à partir de documents déjà existants.
+            Cette partie du site documente l'organisation des données et les applications qui les gèrent.
           </p>
           <p>
-            L'objectif du projet maquisdoc est de partager ces documents et leur organisation.
-          </p>
-          <p>
-            Les ressources présentées par maquisdoc ne seront jamais complètement satisfaisantes pour une autre personne. Toutes les sources (documents, outils d'organisation et de diffusion) sont donc accessibles et téléchargeables pour modification.
-          </p>
-          <p>
-            Le projet ne s'intéresse pas à la gestion d'une classe ni à la monétisation des ressources. Pour autant, <em> de tels développements ne sont pas interdits. </em>  
+            Le projet est en développement et le développeur en apprentissage.<br/> 
+            
+            Un <a href="https://github.com/users/nicolair/projects/1#column-11639552" target="_blank" rel="noreferrer">tableau de progression</a> est présenté sur GitHub.<br/>
+            Le journal suivant présente des remarques qui ont ponctuées cette progression.
           </p>
           <h3>Journal : {data.allMarkdownRemark.totalCount} articles</h3>
           {data.allMarkdownRemark.edges.map(({ node }) => (

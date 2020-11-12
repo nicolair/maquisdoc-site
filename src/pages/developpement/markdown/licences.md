@@ -1,10 +1,12 @@
 ---
 theme: développement
-title: Licences
+title: Licence
 rang: 10
 ---
-### Licences
+### Licence
 
-Le projet maquisdoc est diffusé sous la licence Creative Common ...
+Le projet maquisdoc est mis à disposition selon les termes de la <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Licence Creative Commons Attribution 4.0 International</a>.
 
-Noter que cette licence permet une utilisation commerciale des ressources. Il me semble que c'est le cadre qui convient pour permettre l'utilisation en classe dans un cadre professionel.
+<a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Licence Creative Commons" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" /></a><br />
+
+Noter que cette licence permet une utilisation commerciale des ressources: en particulier pour l'enseignement dans un cadre professionel, en classe ou pour des activités de soutien .
