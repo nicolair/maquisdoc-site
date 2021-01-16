@@ -30,6 +30,26 @@ exports.createPages = async ({ graphql, actions }) => {
           }
         }
       }
+      maquis {
+        semaines {
+          nom
+          concepts {
+            litteral
+            documents{
+                url
+            }
+            listexos{
+                url
+            }
+          }
+          documents {
+            url
+          }
+          sousevenements {
+            nom
+          }
+        }
+      }
     }
   `)
 
@@ -48,5 +68,24 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: node.fields.slug,
       },
     })
+  })
+  
+  const semaines = result.data.maquis.semaines
+  
+  semaines.forEach((semaine,index) => {
+    ({ nom, concepts, documents, sousevenements } = semaine)
+    const next = index === semaines.length - 1 ? semaines[0] :semaines[index + 1]
+    const previous = index === 0 ? semaines[semaines.length - 1] : semaines[index - 1]
+    slug = nom.replace('semaine ','semaine_')  
+    createPage({
+      path: slug,
+      component: path.resolve(`./src/templates/semaine-page.js`),
+      context: {
+          nom: nom,
+          semaine: semaine,
+          previous,
+          next
+        },
+      })
   })
 }

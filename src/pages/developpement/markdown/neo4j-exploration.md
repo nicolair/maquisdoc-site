@@ -17,7 +17,7 @@ date: "2020-11-26"
     
 Remarques
 - Les noms des labels des noeuds doivent (recommandé) être en camel-case commençant par une majuscule : `VehicleOwner`
-- les types de relations doivent (recommandé) être en majuscule séparés par des underscors : `OWNS_VEHICLE`
+- les types de relations doivent (recommandé) être en majuscule séparés par des underscores : `OWNS_VEHICLE`
 
 ### 2. Exemple d'utilisation de fonctions
 
@@ -90,7 +90,7 @@ Commandes cypher :
     MATCH (n { nom : 'pcsi'}) RETURN n;  #pour vérifier
     MATCH (n { nom : 'pcsi'}) DETACH DELETE n;  #pour supprimer
 
-puis la base est sauvegardée sous le nom v0-1.dump. Selon que l'on recharge l'une ou l'autre des bases sauvegardées, on voit bien que l'élément`pcsi` manque ou non.
+puis la base est sauvegardée sous le nom v0-1.dump. Selon que l'on recharge l'une ou l'autre des bases sauvegardées, on voit bien que l'élément `pcsi` manque ou non.
 
 ### 4. Démaquisage
 Transformer les `chaine_date` de valeur '000-00-00 00:00:00' en '2000-01-01 00:00:00'

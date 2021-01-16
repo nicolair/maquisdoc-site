@@ -4,6 +4,9 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
+const graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
+//"http://localhost:3003"
+
 module.exports = {
   siteMetadata: {
     title: `Site maquisdoc`,
@@ -34,5 +37,13 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
+    {
+        resolve: `gatsby-source-graphql`,
+        options: {
+            typeName: "MAQUIS",
+            fieldName: "maquis",
+            url : graphql_server_url
+        }
+    }
   ],
 }

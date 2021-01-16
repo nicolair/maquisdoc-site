@@ -114,7 +114,7 @@ Un seul label par noeud.
 |-----             | -----       |
 | `Concept`          | un concept dans le contexte d'une discipline |
 | `Document`         | document pédagogique dont le type est caractérisé par la valeur de la propriété `typeDoc` |
-| `Événement`        | événement pédagogique dont le type est caractérisé par la valeur de la propriété `typeEvt` |
+| `Evenement`        | événement pédagogique dont le type est caractérisé par la valeur de la propriété `typeEvt` |
 | `SiteWeb`          | sites scientifiques             |
 
 
@@ -130,23 +130,23 @@ Propriétés des noeuds avec les labels des noeuds qui *peuvent* avoir chaque pr
 
 |Propriété | Description | Labels |
 |----------|------------ |--------|
-|`annéeEvt` |  | `Événement` |
+|`annéeEvt` |  | `Evenement` |
 |`date` | héritée, date de l'insertion du noeud | tous |
 |`description`  | texte descriptif | tous |
 |`discipline` | mathématiques, informatique, ... | tous |
 |`ideltdoc` | héritée de maquisdoc | tous |
-|`littéral` | chaîne de caractère désignant le concept | `Concept` |
-|`nom` | obligatoire | `Événement`, `SiteWeb` |
+|`litteral` | chaîne de caractère désignant le concept | `Concept` |
+|`nom` | obligatoire | `Evenement`, `SiteWeb` |
 |`titre` | obligatoire | `Document` |
 |`typeDoc` | type de document | `Document` |
-|`typeEvt` | type d'événement | `Événement` |
+|`typeEvt` | type d'événement | `Evenement` |
 |`typeSiteWeb` | type de site | SiteWeb |
 |`url` | url du document (pdf) | `Document` |
 |`urlCorr` | url du corrigé (pdf)| `Document` |
-|`urlÉnon` | url de l'énoncé (pdf) | `Document` |
+|`urlEnon` | url de l'énoncé (pdf) | `Document` |
 |`urlSrc` | url de la source (lateX, ...) | `Document` |
 |`urlSrcCorr` | url de la source du corrigé | `Document` |
-|`urlSrcÉnon` | url de la source de l'énoncé | `Document` |
+|`urlSrcEnon` | url de la source de l'énoncé | `Document` |
 |`urlSrcMaple` | url dela source Maple (héritée) | `Document` |
 
 ----
@@ -161,10 +161,10 @@ Description des relations
 | DOCUMENTE | un document DOCUMENTE un concept |
 | INTERVIENT_DANS | un concept INTERVIENT_DANS un document. Ce concept est une *clé* du document.|
 | REQUIERT | un document ou un concept REQUIERT un autre concept pour être compris oumaitrisé |
-| RÉFÉRENCE | un document RÉFÉRENCE un autre document au sens d'une référence bibliographique |
-| SPÉCIALISE | un concept SPÉCIALISE un autre concept c'est à dire qu'il en est un cas particulier ouun exemple |
+| REFERENCE | un document REFERENCE un autre document au sens d'une référence bibliographique |
+| SPECIALISE | un concept SPECIALISE un autre concept c'est à dire qu'il en est un cas particulier ouun exemple |
 | UTILISE | un événement UTILISE un document comme support: un document de cours, un énoncé, ... |
-| ÉVALUE | un événement ou certains documents (exercice, devoir) ÉVALUE un concept |
+| EVALUE | un événement ou certains documents (exercice, devoir) EVALUE un concept |
 
 Les tableaux suivant indiquent les labels que doivent avoir les noeuds reliés par une relation d'un certain type.
 
@@ -175,9 +175,9 @@ Si le label du premier noeud est `Document`:
 |	`type(r)`	| `labels(n)` |
 |-----------|----------|
 | `DOCUMENTE` |	 `Concept` |
-| `ÉVALUE` |	 `Concept` |
+| `EVALUE` |	 `Concept` |
 | `CONTIENT` |	 `Document` |
-| `RÉFÉRENCE` |	 `Document` |
+| `REFERENCE` |	 `Document` |
 
 ----
 
@@ -188,22 +188,22 @@ Si le label du premier noeud est `Concept`:
 |	`type(r)`	| `labels(n)`|
 |-----------|----------|
 | `APPARAIT_DANS` |	 `Concept` |
-| `SPÉCIALISE` |	 `Concept` |
+| `SPECIALISE` |	 `Concept` |
 | `CONTIENT` |	 `Concept` |
 | `REQUIERT` |	 `Concept` |
 | `INTERVIENT_DANS` |	 `Document` |
 
 ----
 
-Si le label du premier noeud est `Événement`:
+Si le label du premier noeud est `Evenement`:
     
     MATCH (e:Événement)-[r]->(n) RETURN DISTINCT type(r),labels(n)
 
 |	`type(r)`	| `labels(n)` |
 |-----------|----------|
-| `ÉVALUE` | `Concept` |
+| `EVALUE` | `Concept` |
 | `UTILISE` | `Document` |
-| `CONTIENT` | `Événement` |
+| `CONTIENT` | `Evenement` |
 
 
 ----------------

@@ -11,7 +11,7 @@ Les dépôts sont les lieux où se passe le travail de rédaction. Chacun doit �
 
 Cela inclut les outils de rédaction et le mode de stockage.
 
-Pour ma part Latex + fichiers locaux sur ordinateur pesonnel. 
+Pour ma part Latex + fichiers locaux sur ordinateur personnel. 
 
 On peut imaginer d'autres outils de rédaction (libre office ou autre) et d'autres mode de stockage (headless cms).
 
