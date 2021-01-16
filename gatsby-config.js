@@ -4,7 +4,7 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
-const graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
+//const graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
 //"http://localhost:3003"
 
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
         options: {
             typeName: "MAQUIS",
             fieldName: "maquis",
-            url : graphql_server_url
+            url : "http://188.226.151.10:3003"
         }
     }
   ],
