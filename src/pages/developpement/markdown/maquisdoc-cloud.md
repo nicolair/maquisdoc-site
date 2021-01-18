@@ -101,14 +101,24 @@ Le lancement direct par `pm2 start maquisdoc-appolo.js` conduit à une erreur d'
 
     }
     
-4. Mise à jour de gatsby.config
+4. Mise à jour de gatsby.config.  
 Il faut modifier les paramètres du plugin `gatsby-source-graphql` pour qu'il interroge le serveur sur le droplet.  
-Ici encore, utiliser des variables d'environnement pour garder le même code localement (développement) et sur le droplet (production).
+Ici encore, on pourrait utiliser des variables d'environnement pour garder le même code localement (développement) et sur le droplet (production) mais il y a un problème avec le passage des variables d'environnement sur l'application Digital Ocean.
 
-5. Déploiement sur digital ocean
+5. Déploiement sur digital ocean:  
+automatique lorsque le projet sur GitHub est mis à jour. OK sauf pour la variable d'environnement.
 
 ### Architecture
-Initialement, je pensais implémenter le service GraphQL fourni apollo dans le cadre des applications digital ocean mais ce n'est pas gratuit.  
-C'est la raison pour laquelle j'ai tout implanté sur le droplet.
+Initialement, je pensais implémenter le service GraphQL apollo dans le cadre des applications digital ocean mais ce n'est pas gratuit. Je l'ai donc implanté sur le droplet.
 
 Je souhaite passer à une architecture comme une application web sur la plateforme digital ocean avec des conteneurs mais je le ferai quand je n'utiliserai plus le serveur historique de Imingo.
+
+L'architecture actuelle des versions de développement et de production est la suivante.
+
+Développement.  
+L'application Gatsby lit les fichiers locaux dans le dossier local `src/pages` de ma macine de travail.
+
+Production: site statique Digital Ocean.  
+L'application lit les fichiers dans le dossier `src/pages` du projet sur GitHub.
+
+Les deux applications se connectent aux serveurs apollo puis neo4j **du droplet**.

@@ -16,7 +16,7 @@ export default function Devlopmt({ data }) {
           <p>
             Le projet est en développement et le développeur en apprentissage.<br/> 
             
-            Un <a href="https://github.com/users/nicolair/projects/1#column-11639552" target="_blank" rel="noreferrer">tableau de progression</a> est présenté sur GitHub.<br/>
+            Un <a href="https://github.com/users/nicolair/projects/1" target="_blank" rel="noreferrer">tableau de progression</a> est présenté sur GitHub.<br/>
             Le journal suivant présente des remarques qui ont ponctuées cette progression.
           </p>
           <h3>Journal : {data.allMarkdownRemark.totalCount} articles</h3>
