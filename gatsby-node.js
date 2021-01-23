@@ -16,7 +16,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
-  const result = await graphql(`
+  const result = await graphql(` 
     query {
       allMarkdownRemark {
         edges {
@@ -49,8 +49,16 @@ exports.createPages = async ({ graphql, actions }) => {
             nom
           }
         }
+        problemedocuments(orderBy: titre_asc) {
+          titre
+          description
+          url
+          evenements {
+            nom
+          }
+        }
       }
-    }
+    }  
   `)
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
@@ -87,5 +95,19 @@ exports.createPages = async ({ graphql, actions }) => {
           next
         },
       })
+  })
+  
+  const problemes = result.data.maquis.problemedocuments
+  
+  problemes.forEach((probleme,index) => {
+    ({titre,description,url,evenements} = probleme)
+    slug = 'probleme_' + titre
+    createPage({
+        path: slug,
+        component: path.resolve(`./src/templates/probleme-page.js`),
+        context: {
+            probleme
+        }
+    })
   })
 }

@@ -24,14 +24,14 @@ length path traversals.
 La référence est la vidéo : [Getting started with Neo4j, Gatsby and GraphQL](https://youtu.be/siPmZRTRki8).
 
 Il s'agit d'installer un serveur Node.js (apollo) avec divers modules. Ce serveur présente les données de la base neo4j à travers une API utilisable par un driver Gatsby.  
-Dans le répertoire neo4j-graphql à côté du répertoire maquisdoc-gatsby, on crée un projet node par la commande: `npm init -y`.      
+Dans le répertoire `maquisdoc-graphql` à côté du répertoire maquisdoc-gatsby, on crée un projet node par la commande: `npm init -y`.      
 On installe ensuite des modules:
 
     npm install neo4j-graphql-js
     npm install neo4j-driver
     npm apollo-server
     
-Le fichier `index.js` implémente un serveur qui permet d'effectuer des requêtes sur GraphQL:
+Le fichier `maquisdoc-apollo.js` définit le schéma de la base graphQL et un serveur apollo qui permet d'effectuer des requêtes sur GraphQL:
 
     const { makeAugmentedSchema } = require("neo4j-graphql-js")
     const {ApolloServer} = require("apollo-server")
@@ -53,6 +53,7 @@ Le fichier `index.js` implémente un serveur qui permet d'effectuer des requête
         console.log(`GraphQL ready at ${url}`);
     });
 
+Ce fichier sera soouvent modifié au fur et à mesure du développement. Cette version initiale n'est là que pour aider à comprendre les principes.  
 Pour lancer le serveur qui écoute localement le port 3003, il suffit de lancer la commande `node index.js` dans le répertoire du projet. Si elle répond
 
     GraphQL ready at 0.0.0.0:30303

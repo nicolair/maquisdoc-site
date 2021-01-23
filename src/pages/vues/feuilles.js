@@ -30,7 +30,7 @@ export default function feuilles({ data }) {
                       color: darkgreen;
                     `}
                     href = { data.site.siteMetadata.math_exos.url_diff  +  'A_' + node.code + '.pdf'} 
-                     target="_blank" rel="noopener noreferrer">
+                    target="_blank" rel="noopener noreferrer">
                     {node.theme} 
                   </a>
                 </td>

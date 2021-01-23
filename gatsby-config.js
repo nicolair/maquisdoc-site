@@ -20,14 +20,6 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
-    //{
-    //  resolve: `gatsby-source-filesystem`,
-    //  options: {
-    //    name: `math-exos`,
-    //    path: `/home/remy/Documents/maquisdoc_depots/math-exos/`,
-    //    ignore: [`**/\.*`], // ignore files starting with a dot
-    //  },
-    //},
     `gatsby-transformer-remark`,
     `gatsby-transformer-csv`,
     `gatsby-plugin-emotion`,
@@ -38,11 +30,12 @@ module.exports = {
       },
     },
     {
-        resolve: `gatsby-source-graphql`,
-        options: {
-            typeName: "MAQUIS",
-            fieldName: "maquis",
-            url : "http://188.226.151.10:3003"
+      resolve: `gatsby-source-graphql`,
+      options: {
+        typeName: "MAQUIS",
+        fieldName: "maquis",
+        url : "http://0.0.0.0:3003"
+        //url : "http://188.226.151.10:3003"
         }
     }
   ],
