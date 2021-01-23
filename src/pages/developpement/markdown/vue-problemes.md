@@ -69,5 +69,45 @@ Nouvelles requêtes pour obtenir tous les documents de cours et de problèmes.
     """),
     
 ### 3. Création de pages Gatsby
-On modifie `gatsby-node.js` pour créer des pages associées aux noeuds du type *problème*.
+On modifie `gatsby-node.js` pour créer des pages associées aux noeuds du type *problème*. Elles sont accessibles par url finissant par `/titre` où titre est le titre du problème c'est à dire le coeur des noms des fichiers du problème.
 
+Une page `src/pages/vues/problemes.js` est crée "*à la main*". Elle présente la liste alphabétique avec les url.
+
+### 4. Organisation du passage "*en production*"
+1. base neo4j: elle a été modifiée localement (ajout index)
+    1. dump local
+    2. transfert du fichier sur le droplet
+    3. load de la base sur ledroplet
+2. serveur apollo
+    1. commit local + push sur github
+    2. pull sur droplet
+3. app maquisdoc sur digital ocean
+    1. commit local + push sur git hub
+    2. cela déclenche un "build" de l'appli, attention à l'url du serveur apollo dans le `gatsby-config.js`.
+    
+Commandes de dump de la base locale
+
+    sudo systemctl stop neo4j
+    cd /var/lib/neo4j
+    sudo -u neo4j neo4j-admin dump --database=neo4j --to=backups/maquisdoc/vx-xx.dump
+    
+Commandes pour transférer la base:  
+localement : 
+
+    scp /var/lib/neo4j/backups/maquisdoc/vx-xx.dump remy@188.226.151.10:/home/remy/dumps
+    
+sur le droplet dans le dossier de "remy":
+
+    sudo systemctl stop neo4j
+    sudo cp dumps/vx-xx.dump /var/lib/neo4j/backups/maquisdoc/vx-xx.dump 
+    cd /var/lib/neo4j
+    sudo chown neo4j:neo4j backups/maquisdoc/vx-xx.dump
+    sudo -u neo4j neo4j-admin load --from=backups/maquisdoc/vx-xx.dump --database=neo4j --force
+    sudo systemctl start neo4j
+    
+Commande pour "*tirer*" le serveur apollo sur le droplet
+
+    cd maquisdoc-graphql
+    git fetch origin main
+    pm2 stop ecosystem.config.js
+    pm2 start ecosystem.config.js

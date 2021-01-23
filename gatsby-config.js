@@ -34,8 +34,8 @@ module.exports = {
       options: {
         typeName: "MAQUIS",
         fieldName: "maquis",
-        url : "http://0.0.0.0:3003"
-        //url : "http://188.226.151.10:3003"
+        //url : "http://0.0.0.0:3003"
+        url : "http://188.226.151.10:3003"
         }
     }
   ],

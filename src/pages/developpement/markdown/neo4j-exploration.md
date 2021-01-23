@@ -47,7 +47,7 @@ Un autre exemple autour du problème des dates insérées dans maquisdoc qui ne 
         WHERE NOT n.chaine_date = "0000-00-00 00:00:00" 
         RETURN datetime(REPLACE(n.chaine_date," ","T"))
         
-Pour se convaincre qu'on a bien une date on classe, les plus récents d'abord.
+Pour se convaincre qu'on a bien une date, on classe: les plus récents d'abord.
 
     MATCH (n:`18`)  
         WHERE NOT n.chaine_date = "0000-00-00 00:00:00" 
