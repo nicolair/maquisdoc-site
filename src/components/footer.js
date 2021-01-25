@@ -9,12 +9,13 @@ import ListItem from '@material-ui/core/ListItem'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
-import { rhythm } from "../utils/typography"
 import { Link } from 'gatsby'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    paddingBottom: theme.spacing(2),
+    backgroundColor: '#CCCCFF',
   },
   paper: {
     padding: theme.spacing(2),
@@ -29,49 +30,62 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+function ListItemLink(props) {
+  return <ListItem button component="a" {...props} />;
+}
+
 export default function Footer() {
   const classes = useStyles();
 
   return (
-    <Box className={classes.root} width={'100%'} px={{ xs: 2, sm: 3, lg: 4 }}>
+    <Box
+      className={classes.root}
+      width={'100%'}
+      paddingX={{ xs: 2, sm: 3, lg: 4 }}
+      component='footer'
+    >
       <Grid className={classes.sitemap} container spacing={3}>
-        {/*<div>
-          <Link rel="license" href="http://creativecommons.org/licenses/by/4.0/" css={css`
-            color: darkgreen;
-          `}>
-            <img alt="Licence Creative Commons" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" />
-          </Link>
-        </div> */}
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
             <Typography>Développement</Typography>
             <List>
-              <ListItem button>Principes</ListItem>
-              <ListItem button>Dépôts</ListItem>
-              <ListItem button>Maintenance</ListItem>
-              <ListItem button>Site web - vues</ListItem>
-              <ListItem button>Documentation externe</ListItem>
-              <ListItem button>Licence</ListItem>
-              <ListItem button>l'ancien site du projet</ListItem>
+              <ListItemLink href="/developpement/markdown/principes/">
+                Principes
+              </ListItemLink>
+              <ListItemLink href="/developpement/markdown/depots/">
+                Dépôts
+              </ListItemLink>
+              <ListItemLink href="/developpement/markdown/maintenance/">
+                Maintenance
+              </ListItemLink>
+              <ListItemLink href="/developpement/markdown/site/">
+                Site web - vues
+              </ListItemLink>
+              <ListItemLink href="/developpement/markdown/docexterne/">
+                Documentation externe
+              </ListItemLink>
+              <ListItemLink href="/developpement/markdown/licences/">
+                Licence
+              </ListItemLink>
             </List>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Paper className={classes.paper}>
-          <Typography>Vues</Typography>
+            <Typography>Vues</Typography>
             <List>
-              <ListItem button>Problèmes</ListItem>
-              <ListItem button>Exercices</ListItem>
-              <ListItem button>Cours</ListItem>
-              <ListItem button>Exos</ListItem>
+              <ListItemLink href="/vues/problemes">Problèmes</ListItemLink>
+              <ListItemLink href="/vues/feuilles/">Exercices</ListItemLink>
+              <ListItemLink href="/vues/afaire/">Cours</ListItemLink>
+              <ListItemLink href="/vues/afaire/">Rapidexo</ListItemLink>
             </List>
           </Paper>
         </Grid>
       </Grid>
       <Divider />
-      <Grid className={classes.copyright} item xs={12}>
-        <Paper className={classes.paper}>
-          <Box py={1} textAlign={{ xs: 'center', md: 'left' }}>
+      <Grid container className={classes.copyright}>
+        <Grid item xs={12} sm={6}>
+          <Box py={1} textAlign={{ xs: 'center', sm: 'left' }}>
             <Typography
               component={'p'}
               variant={'caption'}
@@ -80,7 +94,9 @@ export default function Footer() {
               Fait avec ❤️ avec <Link to="https://www.gatsbyjs.com/">Gatsby</Link>
             </Typography>
           </Box>
-          <Box py={1} textAlign={{ xs: 'center', md: 'right' }}>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Box py={1} textAlign={{ xs: 'center', sm: 'right' }}>
             <Typography
               component={'p'}
               variant={'caption'}
@@ -94,10 +110,8 @@ export default function Footer() {
               <img alt="Licence Creative Commons" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" />
             </Link>
           </Box>
-        </Paper>
+        </Grid>
       </Grid>
     </Box>
-    
-      
   )
 }
