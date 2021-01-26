@@ -9,13 +9,12 @@ import ListItem from '@material-ui/core/ListItem'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
-import { Link } from 'gatsby'
+import { useStaticQuery, Link } from 'gatsby'
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    paddingBottom: theme.spacing(2),
-    backgroundColor: '#CCCCFF',
+    backgroundColor: '#CADFC8',
   },
   paper: {
     padding: theme.spacing(2),
@@ -23,7 +22,11 @@ const useStyles = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
   },
   sitemap: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
+    fontSize: "15px",
+  },
+  navtitle: {
+    fontWeight: 700,
   },
   copyright: {
     marginTop: theme.spacing(2)
@@ -34,8 +37,44 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
+function ListTitleLink(props) {
+  const classes = useStyles();
+
+  return <ListItemLink className={classes.navtitle} {...props} />;
+}
+
 export default function Footer() {
   const classes = useStyles();
+  const data = useStaticQuery(graphql`
+    query FooterQuery {
+      allMarkdownRemark(filter: {frontmatter: {theme: {eq: "développement"}}}, sort: {fields: frontmatter___rang, order: ASC}) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+        }
+      }
+      allMenuVuesCsv {
+        edges {
+          node {
+            code
+            page
+            texte
+          }
+        }
+      }
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
 
   return (
     <Box
@@ -46,40 +85,26 @@ export default function Footer() {
     >
       <Grid className={classes.sitemap} container spacing={3}>
         <Grid item xs={12} md={6}>
-          <Paper className={classes.paper}>
-            <Typography>Développement</Typography>
-            <List>
-              <ListItemLink href="/developpement/markdown/principes/">
-                Principes
+          <ListTitleLink href="/developpement/">
+              Développement
+          </ListTitleLink>
+          <List>
+            {data.allMarkdownRemark.edges.map(({ node }) => (
+              <ListItemLink href={node.fields.slug}>
+                {node.frontmatter.title}
               </ListItemLink>
-              <ListItemLink href="/developpement/markdown/depots/">
-                Dépôts
-              </ListItemLink>
-              <ListItemLink href="/developpement/markdown/maintenance/">
-                Maintenance
-              </ListItemLink>
-              <ListItemLink href="/developpement/markdown/site/">
-                Site web - vues
-              </ListItemLink>
-              <ListItemLink href="/developpement/markdown/docexterne/">
-                Documentation externe
-              </ListItemLink>
-              <ListItemLink href="/developpement/markdown/licences/">
-                Licence
-              </ListItemLink>
-            </List>
-          </Paper>
+            ))}
+          </List>
         </Grid>
         <Grid item xs={12} md={6}>
-          <Paper className={classes.paper}>
-            <Typography>Vues</Typography>
-            <List>
-              <ListItemLink href="/vues/problemes">Problèmes</ListItemLink>
-              <ListItemLink href="/vues/feuilles/">Exercices</ListItemLink>
-              <ListItemLink href="/vues/afaire/">Cours</ListItemLink>
-              <ListItemLink href="/vues/afaire/">Rapidexo</ListItemLink>
-            </List>
-          </Paper>
+          <ListTitleLink href="/vues/">
+            Vues
+          </ListTitleLink>
+          <List>
+            {data.allMenuVuesCsv.edges.map(({ node }) => (
+              <ListItemLink href={node.page}>{node.texte}</ListItemLink>
+            ))}
+          </List>
         </Grid>
       </Grid>
       <Divider />
@@ -102,13 +127,13 @@ export default function Footer() {
               variant={'caption'}
               color={'textSecondary'}
             >
-              ©Maquisdoc {new Date().getFullYear()}
+              © {data.site.siteMetadata.title} {new Date().getFullYear()}
             </Typography>
-            <Link rel="license" href="http://creativecommons.org/licenses/by/4.0/" css={css`
+            <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" css={css`
               color: darkgreen;
             `}>
               <img alt="Licence Creative Commons" src="https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/by.svg" />
-            </Link>
+            </a>
           </Box>
         </Grid>
       </Grid>
