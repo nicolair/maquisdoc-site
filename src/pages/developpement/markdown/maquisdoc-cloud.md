@@ -116,9 +116,7 @@ Je souhaite passer à une architecture comme une application web sur la platefor
 L'architecture actuelle des versions de développement et de production est la suivante.
 
 Développement.  
-L'application Gatsby lit les fichiers locaux dans le dossier local `src/pages` de ma macine de travail.
+L'application Gatsby lit les fichiers locaux dans le dossier local `src/pages` de ma macine de travail. En jouant sur l'url du plugin `gatsby-source-graphql` elle se connecte au serveur local apollo (connecté à la base locale) ou à celui du droplet (connecté à la base sur le droplet)
 
 Production: site statique Digital Ocean.  
-L'application lit les fichiers dans le dossier `src/pages` du projet sur GitHub.
-
-Les deux applications se connectent aux serveurs apollo puis neo4j **du droplet**.
+L'application lit les fichiers dans le dossier `src/pages` du projet sur GitHub. Elle se connecte aux serveur apollo puis à la base neo4j **du droplet**.

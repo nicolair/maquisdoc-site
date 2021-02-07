@@ -23,7 +23,7 @@ Pour me simplifier la vie lors du développement . Je ne touche pas au fichier d
 
     `dbms.security.auth_enabled=false`
     
-**Un point important est que le service est lancé par un utilisateur `neo4j`.**
+**Un point important est que même avec cette commande le service est lancé par l'utilisateur `neo4j` et non `root`. Les dossiers en jeu doivent appartenir à l'uitilisateur `neo4j`**
 
 
 ### Outils
@@ -35,7 +35,7 @@ en ligne de commande
 
     `sudo -u neo4j neo4j-admin ...`
     
-Cet outils servira à importer la base maquisdoc extraite du serveur mariadb.
+Cet outils ont servi à importer la base maquisdoc extraite du serveur mariadb.
 
 Pour lancer cypher-shell il faut indiquer en paramètres le nom d'utilisateur de la base et le mot de passe. Pour ne pas avoir à retaper à chaque fois, il est commode d'utiliser une [variable d'environnement](https://www.digitalocean.com/community/tutorials/how-to-read-and-set-environmental-and-shell-variables-on-a-linux-vps).
 

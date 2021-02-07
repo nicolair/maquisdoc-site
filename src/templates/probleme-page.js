@@ -1,12 +1,14 @@
 import React from "react"
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 import Layout from "../components/layout"
+import LayoutVues from "../components/layoutvues"
 
 const ProblemePage = ({ data, pageContext}) => {
     const probleme = pageContext.probleme
     const utilisations = probleme.evenements
     return (
-        <layout>
+        <Layout>
+        <LayoutVues>
         <h3> Vue problème {probleme.titre}</h3>
         <p> {probleme.description}</p>
         <p> <a href={probleme.url} 
@@ -17,7 +19,8 @@ const ProblemePage = ({ data, pageContext}) => {
         <p>utilisations:
          {utilisations.map(({nom})=> ' ' + nom)}
         </p>
-        </layout>
+        </LayoutVues>
+        </Layout>
     )
 }
 

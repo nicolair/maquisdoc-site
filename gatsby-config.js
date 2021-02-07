@@ -4,8 +4,12 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
-//const graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
-//"http://localhost:3003"
+graphql_server_url = "http://188.226.151.10:3003"
+if ( process.env.MQD_GRAPHQL_SERVER_URL ){
+    graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
+}
+
+//console.log(graphql_server_url)
 
 module.exports = {
   siteMetadata: {
@@ -18,7 +22,13 @@ module.exports = {
       options: {
         name: `src`,
         path: `${__dirname}/src/`,
-      },
+      }        
+    },
+    {
+      resolve: `gatsby-plugin-apollo`,
+      options: {
+        uri: graphql_server_url
+      }
     },
     `gatsby-transformer-remark`,
     `gatsby-transformer-csv`,
@@ -35,7 +45,8 @@ module.exports = {
         typeName: "MAQUIS",
         fieldName: "maquis",
         //url : "http://0.0.0.0:3003"
-        url : "http://188.226.151.10:3003"
+        //url : "http://188.226.151.10:3003"
+        url : graphql_server_url
         }
     }
   ],

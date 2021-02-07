@@ -29,7 +29,7 @@ export default function LayoutVues({ children }) {
                 padding-right: ${rhythm(1.5)};
                 `}> 
             {data.allMenuVuesCsv.edges.map(({ node }) => (
-                <div key={node.id}>
+                <div key={node.code}>
                   <Link
                     css={css`
                       color: darkgreen;
