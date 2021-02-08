@@ -223,3 +223,5 @@ Commande pour "*tirer*" le serveur apollo sur le droplet
     git fetch origin main
     pm2 stop ecosystem.config.js
     pm2 start ecosystem.config.js
+
+### 5. Changement d'architecture
