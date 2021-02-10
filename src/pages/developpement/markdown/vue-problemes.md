@@ -224,4 +224,7 @@ Commande pour "*tirer*" le serveur apollo sur le droplet
     pm2 stop ecosystem.config.js
     pm2 start ecosystem.config.js
 
-### 5. Changement d'architecture
+### 5. Architecture
+
+La page de recherche fonctionne bien sur le serveur local de développement mais pas sur l'application Digital Ocean de production. Le problème vient de l'architecture de l'application décrite dans l'article *"maquisdoc: cloud"* du journal de développement.  
+L'article *"nouvelle architecture"* présente la solution a cette difficulté.
