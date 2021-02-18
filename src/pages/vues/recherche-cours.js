@@ -7,9 +7,11 @@ import LayoutVues from "../../components/layoutvues"
 
 import {useLazyQuery, gql } from "@apollo/client"
 
-const GET_PBS_QUERY = gql`
-  query getPbs($mot : String){
-    searchpbs(mot: $mot){
+const urlObj = require('url')
+
+const GET_COURS_QUERY = gql`
+  query getCours($mot : String){
+    searchcours(mot: $mot){
       titre,
       description,
       url
@@ -18,7 +20,7 @@ const GET_PBS_QUERY = gql`
 `
 
 export default function RecherchePage({ data }) {
-  const [getPbs, { loading, data: pbsData}] = useLazyQuery(GET_PBS_QUERY)
+  const [getPbs, { loading, data: coursData}] = useLazyQuery(GET_COURS_QUERY)
   
   const onChercherCliqué = e => {
     const mot_a_chercher = document.getElementById("mot_a_chercher").value
@@ -30,7 +32,7 @@ export default function RecherchePage({ data }) {
   return (
       <Layout>
       <LayoutVues>
-        <h3> Recherche dans les problèmes</h3> {loading}
+        <h3> Recherche dans les textes de cours</h3> {loading}
         <input type="text" id="mot_a_chercher"/>
         <button onClick={onChercherCliqué}>
             Chercher
@@ -44,7 +46,7 @@ export default function RecherchePage({ data }) {
             </tr>
           </thead>
           <tbody>
-            { (pbsData) && pbsData.searchpbs.map(({titre, description,url},index)=>(
+            { (coursData) && coursData.searchcours.map(({titre, description,url},index)=>(
               <tr key={index}>
                 <td> {description} </td>
                 <td> 
@@ -59,7 +61,7 @@ export default function RecherchePage({ data }) {
                 <td>
                   <Link 
                     css={css`color: darkgreen;`}
-                    to={"/probleme_" + titre}>
+                    to= {urlObj.parse(url,true).pathname.replace('.pdf','')}>
                     <small>relations</small>
                   </Link>
                 </td>

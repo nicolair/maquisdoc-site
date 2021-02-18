@@ -57,6 +57,16 @@ exports.createPages = async ({ graphql, actions }) => {
             nom
           }
         }
+        coursdocuments(orderBy: titre_asc) {
+          titre
+          description
+          url
+          urlSrc
+          concepts {
+            litteral
+            description
+          }
+        }
       }
     }  
   `)
@@ -108,6 +118,22 @@ exports.createPages = async ({ graphql, actions }) => {
         context: {
             probleme
         }
+    })
+  })
+  
+  const lcours = result.data.maquis.coursdocuments
+  
+  lcours.forEach((cours,index) => {
+    ({titre,description,url,urlSrc,concepts} = cours)
+    var urlObj = require('url')
+    var q = urlObj.parse(url, true)
+    const slug = q.pathname.replace('.pdf','')
+    createPage({
+        path: slug,
+        component: path.resolve(`./src/templates/cours-page.js`),
+        context: {
+            cours
+        }      
     })
   })
 }

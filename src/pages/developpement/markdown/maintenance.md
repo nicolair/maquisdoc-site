@@ -14,6 +14,7 @@ La maintenance s'effectue à l'aide de scripts python locaux. Elle doit effectue
 2. Diffusions:
     * sources: sur dépôt GitHub distant
     * documents: sur espace DigitalOcean
+3. Contextualisation dans la base neo4j
 
 Les script de maintenance sont rassemblés dans le dépot [mtn-dpt](https://github.com/nicolair/mtn_dpt) de GitHub.
 

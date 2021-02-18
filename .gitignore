@@ -1,3 +1,6 @@
+# originaux locaux de sauvegarde
+*.ori
+
 # Logs
 logs
 *.log

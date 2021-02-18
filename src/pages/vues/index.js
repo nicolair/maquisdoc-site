@@ -9,11 +9,8 @@ export default function Vues({ data }) {
       <LayoutVues>
         <div>
           <p>
-            Maquisdoc présente des centaines de documents.<br/>
+            Maquisdoc contient des centaines de documents.<br/>
             Chaque vue présente une partie de ces documents.
-          </p>
-          <p>
-            Le projet ne s'intéresse pas à la gestion d'une classe ni à la monétisation des ressources. Pour autant, <em> de tels développements ne sont pas interdits. </em>  
           </p>
         </div>
       </LayoutVues>

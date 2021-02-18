@@ -4,8 +4,8 @@ import { makeStyles } from '@material-ui/core/styles'
 //import Paper from '@material-ui/core/Paper'
 import Grid from "@material-ui/core/Grid"
 import Divider from '@material-ui/core/Divider'
-import List from '@material-ui/core/List'
-import ListItem from '@material-ui/core/ListItem'
+//import List from '@material-ui/core/List'
+//import ListItem from '@material-ui/core/ListItem'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
@@ -28,18 +28,19 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
+//function ListItemLink(props) {
+//  return <ListItem button component="a" {...props} />;
+//}
 
-function ListTitleLink(props) {
-  const classes = useStyles();
-
-  return <ListItemLink className={classes.navtitle} {...props} />;
-}
+//function ListTitleLink(props) {
+//  const classes = useStyles();
+//
+//  return <ListItemLink className={classes.navtitle} {...props} />;
+//}
 
 export default function Footer() {
   const classes = useStyles();
+  // pas utile dans la forme actuelle
   const data = useStaticQuery(graphql`
     query FooterQuery {
       allMarkdownRemark(filter: {frontmatter: {theme: {eq: "développement"}}}, sort: {fields: frontmatter___rang, order: ASC}) {
@@ -75,7 +76,7 @@ export default function Footer() {
     <Box
       className={classes.root}
       width={'100%'}
-      paddingX={{ xs: 2, sm: 3, lg: 4 }}
+      paddingX={{ xs: 2, sm: 5, lg: 4 }}
       component='footer'
     >
       <Divider />

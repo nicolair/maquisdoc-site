@@ -69,6 +69,7 @@ export default function Layout({ children }) {
           </ul>
         {children}
         </div>
+        <p/>
       <Footer />
     </div>
     

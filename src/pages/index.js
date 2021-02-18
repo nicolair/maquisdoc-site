@@ -17,7 +17,7 @@ export default function Home({ data }) {
           Ils peuvent servir à la préparation d'un concours d'enseignement (capes ou agrégation).
         </p>
         <p>
-          Ce site est en développement et présente encore peu de documents. L'ensemble des documents est disponible par <a href="http://back.maquisdoc.net/v-1/index.php?login=1" target="_blank" rel="noreferrer">l'ancien site du projet</a>.
+          Ce site est en développement et ne présente pas encore tous les documents. Ils sont toujours accessible par <a href="http://back.maquisdoc.net/v-1/index.php?login=1" target="_blank" rel="noreferrer">l'ancien site du projet</a>.
         </p>
       </div>
     </Layout> 
