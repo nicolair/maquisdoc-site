@@ -118,7 +118,7 @@ Un seul label par noeud.
 | `SiteWeb`          | sites scientifiques             |
 
 
-Valeurs de `typeDoc` : cours, liste exercices, liste rapidexo, exercice, livre problèmes, problème, programme, sujet dossier ADS
+Valeurs de `typeDoc` : cours, liste exercices, liste rapidexo, exercice, livre, livre problèmes, problème, programme, sujet dossier ADS, article scientifique.
 
 Valeurs de `typeEvt` : question de cours , DM, DS
 

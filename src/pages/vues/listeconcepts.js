@@ -5,43 +5,33 @@ import { graphql , Link} from "gatsby"
 import Layout from "../../components/layout"
 import LayoutVues from "../../components/layoutvues"
 
-export default function ListeCoursPage({ data }){
+
+export default function ListeConceptPage({ data }){
     return (
         <Layout>
         <LayoutVues>
-        <h3> Textes de cours </h3>
+        <h3> Liste des concepts </h3>
         <Link
           css={css`color: darkgreen;`}
-          to="../recherche-cours">
-          Recherche par mot <small>(titre et description)</small>
+          to="../recherche-concepts">
+          Recherche par mot <small>(littéral et description)</small>
         </Link>
         <table>
           <thead>
             <tr>
-              <th> titre </th>
-              <th> pdf </th>
+              <th> litteral </th>
               <th> maquis </th>
             </tr>
           </thead>
           <tbody>
-            {data.maquis.coursdocuments.map(({titre, url,_id},index)=>(
+            {data.maquis.Concept.map(({litteral, _id},index)=>(
                 <tr key={index}>
-                  <td>{titre}</td>
+                  <td>{litteral}</td>
                   <td> 
-                    <a 
-                      css={css`color:darkgreen;`}
-                      href= {url}
-                      target="blank"
-                      rel="noopener noreferrer"
-                    >
-                      <small>lien</small>
-                    </a>
-                  </td>
-                  <td>
-                    <Link 
+                    <Link
                       css={css`color: darkgreen;`}
-                      to= {"/document_"+_id}>
-                      <small> détail</small>
+                      to={"/concept_"+_id}>
+                      détail
                     </Link>
                   </td>
                 </tr>
@@ -57,10 +47,9 @@ export default function ListeCoursPage({ data }){
 export const query = graphql`
   query {
     maquis {
-      coursdocuments(orderBy: titre_asc) {
+      Concept(orderBy: litteral_asc) {
+        litteral
         _id
-        titre
-        url
       }
     }
   }

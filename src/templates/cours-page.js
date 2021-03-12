@@ -1,5 +1,6 @@
 import React from "react"
-//import { Link } from "gatsby"
+import { Link } from "gatsby"
+import { css } from "@emotion/core"
 import Layout from "../components/layout"
 import LayoutVues from "../components/layoutvues"
 
@@ -16,8 +17,13 @@ const CoursPage = ({ data, pageContext}) => {
                rel="noopener noreferrer">
             <small> ( pdf ) </small></a>
         </p>
-        <p>Concepts documentés :
-         {concepts.map(({litteral})=> ' ' + litteral)}
+        <p>Concepts documentés : 
+         {concepts.map(({litteral, _id}) => 
+            <Link
+                css={css`color: darkgreen;`}
+                to={"/concept_" + _id}>
+              {litteral}   
+            </Link> )}
         </p>
         </LayoutVues>
         </Layout>

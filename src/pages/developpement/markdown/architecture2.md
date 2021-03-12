@@ -21,7 +21,7 @@ En fait, c'est le navigateur qui bloque le résultat de la requête pour des rai
 
 Pourquoi le reste du site fonctionne-t-il normalement?
 
-Parce qu'il est *statique*. Les pages sont fabriquées par Node et React *au moment de la construction* avec les données obtenues par http. Le protocole http n'est pas obsolète pour lui même; les navigateurs le bloque dans les contextes qu'ils estiment dangereux. 
+Parce qu'il est *statique*. Les pages sont fabriquées par Node et React *au moment de la construction* avec les données obtenues par http. Le protocole http n'est pas obsolète en lui même; les navigateurs le bloquent dans les contextes qu'ils estiment dangereux. 
 
 Lorsque le site est complètement statique, les seules requêtes se font au moment de la construction, le navigateur n'intervient pas. En revanche, avec le formulaire de recherche, c'est l'utilisateur donc le navigateur qui déclenche la requête http au serveur graphql.  
 En developpement, le navigateur l'accepte par dérogation à l'interdiction générale parce que tous les urls sont en `http://localhost`.

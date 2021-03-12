@@ -24,7 +24,7 @@ export default function ProblemesPage({ data }){
             </tr>
           </thead>
           <tbody>
-            {data.maquis.problemedocuments.map(({titre, description,url},index)=>(
+            {data.maquis.problemedocuments.map(({_id,titre, description,url,},index)=>(
                 <tr key={index}>
                   <td> {description} </td>
                   <td> 
@@ -40,7 +40,7 @@ export default function ProblemesPage({ data }){
                   <td>
                     <Link 
                       css={css`color: darkgreen;`}
-                      to= {"/probleme_" + titre}>
+                      to= {"/document_" + _id}>
                       <small> détail</small>
                     </Link>
                   </td>
@@ -58,6 +58,7 @@ export const query = graphql`
   query {
     maquis {
       problemedocuments(orderBy: titre_asc) {
+        _id
         titre
         description
         url

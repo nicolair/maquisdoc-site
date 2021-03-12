@@ -10,6 +10,7 @@ import {useLazyQuery, gql } from "@apollo/client"
 const GET_PBS_QUERY = gql`
   query getPbs($mot : String){
     searchpbs(mot: $mot){
+      _id,
       titre,
       description,
       url
@@ -44,7 +45,7 @@ export default function RecherchePage({ data }) {
             </tr>
           </thead>
           <tbody>
-            { (pbsData) && pbsData.searchpbs.map(({titre, description,url},index)=>(
+            { (pbsData) && pbsData.searchpbs.map(({titre,_id, description,url},index)=>(
               <tr key={index}>
                 <td> {description} </td>
                 <td> 
@@ -59,7 +60,7 @@ export default function RecherchePage({ data }) {
                 <td>
                   <Link 
                     css={css`color: darkgreen;`}
-                    to={"/probleme_" + titre}>
+                    to={"/document_" + _id}>
                     <small>relations</small>
                   </Link>
                 </td>

@@ -7,24 +7,23 @@ import LayoutVues from "../../components/layoutvues"
 
 import {useLazyQuery, gql } from "@apollo/client"
 
-const urlObj = require('url')
-
 const GET_COURS_QUERY = gql`
   query getCours($mot : String){
     searchcours(mot: $mot){
       titre,
       description,
-      url
+      url,
+      _id
     }  
   }
 `
 
 export default function RecherchePage({ data }) {
-  const [getPbs, { loading, data: coursData}] = useLazyQuery(GET_COURS_QUERY)
+  const [getCrs, { loading, data: coursData}] = useLazyQuery(GET_COURS_QUERY)
   
   const onChercherCliqué = e => {
     const mot_a_chercher = document.getElementById("mot_a_chercher").value
-    getPbs({ variables:{mot:mot_a_chercher}})
+    getCrs({ variables:{mot:mot_a_chercher}})
     //console.log(mot_a_chercher)
     //console.log(pbsData)
   }
@@ -46,7 +45,7 @@ export default function RecherchePage({ data }) {
             </tr>
           </thead>
           <tbody>
-            { (coursData) && coursData.searchcours.map(({titre, description,url},index)=>(
+            { (coursData) && coursData.searchcours.map(({titre, description,url,_id},index)=>(
               <tr key={index}>
                 <td> {description} </td>
                 <td> 
@@ -61,8 +60,8 @@ export default function RecherchePage({ data }) {
                 <td>
                   <Link 
                     css={css`color: darkgreen;`}
-                    to= {urlObj.parse(url,true).pathname.replace('.pdf','')}>
-                    <small>relations</small>
+                    to= {"/document_"+_id}>
+                    <small>vue détail</small>
                   </Link>
                 </td>
               </tr>

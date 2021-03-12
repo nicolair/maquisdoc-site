@@ -23,7 +23,7 @@ Pour me simplifier la vie lors du développement . Je ne touche pas au fichier d
 
     `dbms.security.auth_enabled=false`
     
-**Un point important est que même avec cette commande le service est lancé par l'utilisateur `neo4j` et non `root`. Les dossiers en jeu doivent appartenir à l'uitilisateur `neo4j`**
+**Un point important est que même avec cette commande le service est lancé par l'utilisateur `neo4j` et non `root`. Les dossiers en jeu doivent appartenir à l'utilisateur `neo4j`**
 
 
 ### Outils
