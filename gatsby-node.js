@@ -31,6 +31,22 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       maquis {
+        documentsvoisins {
+           typeRel
+           out
+           docType
+           docTitre
+           docDescription
+           docUrl
+           docId
+        }
+        conceptsvoisins {
+          typeRel
+          out
+          conceptLitteral
+          conceptDescription
+          conceptId
+        }
         semaines {
           nom
           concepts {
