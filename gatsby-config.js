@@ -10,7 +10,7 @@ graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
 //    graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
 //}
 
-console.log(graphql_server_url)
+console.log("graphql_server_url :" + graphql_server_url)
 
 module.exports = {
   siteMetadata: {
