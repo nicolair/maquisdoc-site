@@ -4,12 +4,13 @@
  * See: https://www.gatsbyjs.com/docs/gatsby-config/
  */
 
-graphql_server_url = "http://188.226.151.10:3003"
-if ( process.env.MQD_GRAPHQL_SERVER_URL ){
-    graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
-}
+graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
+//graphql_server_url = "http://188.226.151.10:3003"
+//if ( process.env.MQD_GRAPHQL_SERVER_URL ){
+//    graphql_server_url = process.env.MQD_GRAPHQL_SERVER_URL
+//}
 
-//console.log(graphql_server_url)
+console.log(graphql_server_url)
 
 module.exports = {
   siteMetadata: {
