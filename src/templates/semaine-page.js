@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import Layout from "../components/layout"
+import LayoutVues from "../components/layoutvues"
 
 const SemainePage = ({ data, pageContext }) => {
   const { previous, next} = pageContext 
@@ -28,6 +29,7 @@ const SemainePage = ({ data, pageContext }) => {
 
   return (
     <Layout>
+    <LayoutVues>
     <h3> Une année en mpsi B </h3>
     <h4>{pageContext.nom}</h4>
     <p>
@@ -75,6 +77,7 @@ const SemainePage = ({ data, pageContext }) => {
         </li>
       </ul>
     </nav>
+    </LayoutVues>
     </Layout>
   )
 }

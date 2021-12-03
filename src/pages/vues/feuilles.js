@@ -12,7 +12,7 @@ export default function feuilles({ data }) {
     <Layout>
     <LayoutVues>
       <div>
-        <h1>Feuilles d'exercices</h1>
+        <h3>Feuilles d'exercices</h3>
         <table>
           <thead>
             <tr>

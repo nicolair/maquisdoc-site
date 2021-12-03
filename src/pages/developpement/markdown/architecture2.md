@@ -1,10 +1,10 @@
 ---
 theme: "journal"
-title: "nouvelle architecture"
+title: "architecture 2"
 date: "2021-02-09"
 ---
 ### 1. Défaut de la première architecture
-L'implémentation d'une recherche de chaine de caractère dans le nom et la description des problèmes a mis a jour un problème sérieux dans l'architecture de déploiement.
+L'implémentation d'une recherche de chaine de caractère dans le nom et la description des problèmes a mis a jour un défaut sérieux dans l'architecture initiale de déploiement.
 
 Cette architecture comporte 3 composantes:
 
@@ -13,11 +13,11 @@ Cette architecture comporte 3 composantes:
 * au milieu un serveur apollo présente au front-end une API graphql qui interface la base de données. 
 
 Dans l'environnement de développement, les 3 sont implantées sur ma machine locale de travail.  
-Dans l'environnement "de production" (déploiement cloud) le site Gatsby est une application Digital Ocean (implantée dans un container minimal que je ne gère pas). Les deux autres serveurs sont implantés dans un droplet Digital Ocean qui est une machine virtuelle hébergée que je gère complètement (qui est très semblable à ma machine de travail).
+Dans l'environnement "de production" (déploiement cloud) le site Gatsby est une application Digital Ocean (implantée dans un container minimal que je ne gère pas). Initialement, les deux autres serveurs étaient implantés dans un droplet Digital Ocean qui est une machine virtuelle hébergée que je gère complètement (très semblable à ma machine de travail).
 
 Après les ajouts nécessaires à la recherche, tout fonctionne en développement. En production, tout se construit sans erreur et le site fonctionne sauf la recherche d'une chaine de caractère qui ne renvoie jamais rien.
 
-En fait, c'est le navigateur qui bloque le résultat de la requête pour des raisons de sécurité. En effet les données sont obtenues par une requête au serveur graphql intermédiaire mais cette requête se fait avec le protocole http alors l'accès au front-end se fait avec https.
+En fait, c'est le navigateur qui bloque le résultat de la requête pour des raisons de sécurité. En effet les données sont obtenues par une requête au serveur graphql intermédiaire mais cette requête se fait avec le protocole http alors que l'accès au front-end se fait avec https.
 
 Pourquoi le reste du site fonctionne-t-il normalement?
 

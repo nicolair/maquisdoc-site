@@ -9,7 +9,7 @@ import Divider from '@material-ui/core/Divider'
 import Box from '@material-ui/core/Box'
 import Typography from '@material-ui/core/Typography'
 
-import { useStaticQuery, Link, graphql } from 'gatsby'
+import { useStaticQuery, graphql } from 'gatsby'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -88,10 +88,11 @@ export default function Footer() {
               variant={'caption'}
               color={'textSecondary'}
             >
-              Fait avec 
-              <Link to="https://www.gatsbyjs.com/"> Gatsby</Link>, 
-              <Link to="https://graphql.org/"> GraphQL</Link>, 
-              <Link to="https://neo4j.com/"> Neo4j</Link> 
+              <a href="https://www.digitalocean.com/?refcode=f4f90350d40b&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.digitaloceanspaces.com/WWW/Badge%202.svg" alt="DigitalOcean Referral Badge" /></a>
+               avec 
+              <a href="https://www.gatsbyjs.com/"> Gatsby</a>, 
+              <a href="https://graphql.org/"> GraphQL</a>, 
+              <a href="https://neo4j.com/"> Neo4j</a> 
             </Typography>
           </Box>
         </Grid>

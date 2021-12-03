@@ -13,6 +13,7 @@ export default function LayoutDvlpt({ children }) {
         ) {
           edges {
             node {
+              id
               fields {
                 slug
               }
