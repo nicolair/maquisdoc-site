@@ -29,7 +29,7 @@ On peut remarquer que, en production, tous les serveurs ("front" et "intermédia
  | `NEO4J_URL`, `NEO4J_USERNAME`, `NEO4J_PASSWORD` | GraphQl | credentials serveur neo4j |
  | `MQD_GRAPHQL_SERVER_URL` | Gatsby | URL serveur graphql |
  | `GITHUB_TOKEN`, `GITHUB_USER` | Flask | credentials for GitHub repos |
- | `FLASK_ENV`, `FLASK_APP`| Flask | configuration du serveur flask |
+ | `FLASK_URL`,`FLASK_ENV`, `FLASK_APP`| Flask | configuration du serveur flask |
 
  #### 3. Implantation des variables d'environnement
  En développement, comme tous les serveurs intermédiaires sont implantés sur la machine de travail locale, les variables sont exportées (à partir du fichier `~/.bashrc`) dès le login vers les processus engendrant les serveurs.  

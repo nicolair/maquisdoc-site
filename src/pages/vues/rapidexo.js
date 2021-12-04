@@ -6,7 +6,8 @@ import { useFormik } from "formik"
 import 'katex/dist/katex.min.css'
 //import Latex from "react-latex-next"
 
-const flaskServerUrl = `http://127.0.0.1:5000`;
+//const flaskServerUrl = `http://127.0.0.1:5000`;
+const flaskServerUrl = process.env.FLASK_URL;
 
 const themes = {        
    'Calcloc':{'nom':'Calcul local','nb':0},
