@@ -15,7 +15,8 @@ console.log("graphql_server_url :" + graphql_server_url)
 module.exports = {
   siteMetadata: {
     title: `Site maquisdoc`,
-    math_exos: {'url_diff': "https://maquisdoc-math.fra1.digitaloceanspaces.com/math-exos/"}
+    math_exos: {'url_diff': "https://maquisdoc-math.fra1.digitaloceanspaces.com/math-exos/"},
+    servers:{ 'latexgithub':{'url':process.env.FLASK_URL}}
   },
   plugins: [
     {

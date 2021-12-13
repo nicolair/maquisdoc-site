@@ -7,7 +7,7 @@ date: "2021-10-31"
 
 Rapidexo permet de former des feuilles de 30 petits exercices techniques à partir d'une base d'exercices classés par thèmes.
 
-L'utilisateur y accède par la page (Gatsby) de vue rapidexo.js qui exécute des requêtes vers un serveur flask.  
+L'utilisateur y accède par la page (Gatsby) de vue rapidexo.js qui exécute des requêtes vers un serveur Gunicorn + flask. Cet ensemble est un composant de l'application maquisdoc de Digital Ocean.  
 Côté Gatsby, la dynamique de la page est gérée à l'aide d'états: `roleState`, `listeRefsState`, `pdfUrlState`, `numState`. 
 
 1. Former une liste de références d'exercices
@@ -49,3 +49,6 @@ Il faut actualiser les thèmes et il manque des exercices pour certains
   
 Les exercices `Ectrigus89`, `Ectrigus90`, `Ectrigus91` contiennent des images pdf créés avec asymptote. Je ne sais pas les compiler pour le moment. J'ai contourné le problème en les renommant `_Ectrigus89`, `_Ectrigus90`, `_Ectrigus91` de manière à ce qu'ils ne soient jamais tirés.
 
+###4. Déploiement sur Digital Ocean
+
+Référence : [How To Deploy a FlaskApp Using Gunicorn to App Platform](https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-app-using-gunicorn-to-app-platform)

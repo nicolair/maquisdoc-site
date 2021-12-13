@@ -1,13 +1,26 @@
 import React, {useState }  from "react"
 import { css } from "@emotion/core"
+import { graphql } from "gatsby"
 import Layout from "../../components/layout"
 import LayoutVues from "../../components/layoutvues"
 import { useFormik } from "formik"
 import 'katex/dist/katex.min.css'
 //import Latex from "react-latex-next"
 
+
+const RapidexoPage = ({ data })=> {
+  /*
+   Plusieurs états pour gérer l'application
+     *roleState: valeur parmi 'choixliste',
+       'choixvisu', 'lien pdf', 'visulatex'
+     *listeRefsState: valeur liste de 30 chemins vers les fichiers
+     *pdfUrlState: url du fichier pdf compilé à télécharger
+     *numState: numéro de 0 à 30 de l'exercice courant
+     *latexState: le code de l'exercice courant
+  */
 //const flaskServerUrl = `http://127.0.0.1:5000`;
-const flaskServerUrl = process.env.FLASK_URL;
+//const flaskServerUrl = process.env.FLASK_URL
+const  flaskServerUrl = data.site.siteMetadata.servers.latexgithub.url
 
 const themes = {        
    'Calcloc':{'nom':'Calcul local','nb':0},
@@ -30,17 +43,6 @@ for (let theme in themes){
     initval[theme] = themes[theme]['nb']
     themeslist.push(theme)
 }
-
-const RapidexoPage = ()=> {
-  /*
-   Plusieurs états pour gérer l'application
-     *roleState: valeur parmi 'choixliste',
-       'choixvisu', 'lien pdf', 'visulatex'
-     *listeRefsState: valeur liste de 30 chemins vers les fichiers
-     *pdfUrlState: url du fichier pdf compilé à télécharger
-     *numState: numéro de 0 à 30 de l'exercice courant
-     *latexState: le code de l'exercice courant
-  */
 
   const [roleState,setRole] = useState(0)
   const [listeRefsState,setlisteRefs] = useState([])
@@ -285,3 +287,16 @@ const RapidexoPage = ()=> {
 
 export default RapidexoPage
 
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        servers {
+          latexgithub {
+              url
+          }
+        }
+      }
+    }
+  }
+`
