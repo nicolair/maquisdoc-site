@@ -66,7 +66,8 @@ for (let theme in themes){
       )
       //alert(JSON.stringify(formik.values))
       fetch( getUrl, {
-          method: 'GET'}
+          method: 'GET',
+          mode: 'cors'}
       )
         .then(response => response.text())
         .then(function(resp){
