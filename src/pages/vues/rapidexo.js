@@ -22,6 +22,8 @@ const RapidexoPage = ({ data })=> {
 //const flaskServerUrl = process.env.FLASK_URL
 const  flaskServerUrl = data.site.siteMetadata.servers.latexgithub.url
 
+const latexonline = "https://latexonline.cc/compile?url="
+
 const themes = {        
    'Calcloc':{'nom':'Calcul local','nb':0},
    'Courbpar':{'nom':'Courbes paramétrées','nb':0},
@@ -50,13 +52,6 @@ for (let theme in themes){
   const [numState,setNum] = useState(0)
   const [latexState,setLatex] = useState('')
   
-  /*const traiteLatex = (latexString) => {
-      console.log(latexString)
-      return (
-          <div><Latex> TAGADA</Latex></div>
-      )
-  }
-  */
   
   const fetchREFS = data => {
       var getUrl = new URL(flaskServerUrl + '/getREFS')
@@ -66,8 +61,8 @@ for (let theme in themes){
       )
       //alert(JSON.stringify(formik.values))
       fetch( getUrl, {
-          method: 'GET',
-          mode: 'cors'}
+          method: 'GET'}
+          //mode: 'cors'}
       )
         .then(response => response.text())
         .then(function(resp){
@@ -78,7 +73,7 @@ for (let theme in themes){
            setRole(1)
           })
          .catch(function(error){
-            console.log(error);  
+            console.log('tagada ' +flaskServerUrl+' ' + error);  
           })
   };
   
@@ -93,8 +88,9 @@ for (let theme in themes){
       })
         .then(resp => resp.json())
         .then(function(resp){
-           //console.log(resp['id_session']);
-           const pdfUrl = flaskServerUrl 
+           //console.log(resp['latex_urlstr']);
+           const pdfUrl = latexonline 
+                        + flaskServerUrl
                         + '/getPDF/'
                         + resp['id_session'];
            setpdfUrl(pdfUrl);
