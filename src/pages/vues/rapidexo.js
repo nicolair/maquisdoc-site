@@ -49,6 +49,7 @@ for (let theme in themes){
   const [roleState,setRole] = useState(0)
   const [listeRefsState,setlisteRefs] = useState([])
   const [pdfUrlState,setpdfUrl] = useState('')
+  const [pdfUrlCorrState,setpdfCorrUrl] = useState('')
   const [numState,setNum] = useState(0)
   const [latexState,setLatex] = useState('')
   
@@ -94,6 +95,11 @@ for (let theme in themes){
                         + '/getPDF/'
                         + resp['id_session'];
            setpdfUrl(pdfUrl);
+           const pdfCorrUrl = latexonline 
+                        + flaskServerUrl
+                        + '/getCorrPDF/'
+                        + resp['id_session'];
+           setpdfCorrUrl(pdfCorrUrl);
            setRole(2)
           })
          .catch(function(error){
@@ -103,14 +109,26 @@ for (let theme in themes){
 
   const pdfANCHOR = () => {
         return (
-          <a
-             onClick= {()=>setRole(3)}
-             href= {pdfUrlState}
-             target= "_blank"
-             rel= "noreferrer"
-             download>
-            Télécharger pdf 
-          </a>)
+          <React.Fragment>
+            Télécharger &nbsp;
+            <a
+               onClick= {()=>setRole(3)}
+               href= {pdfUrlState}
+               target= "_blank"
+               rel= "noreferrer"
+               download>
+                 énoncé pdf
+            </a>
+            &nbsp; &nbsp;
+            <a
+              onClick= {()=>setRole(3)}
+              href= {pdfUrlCorrState}
+              target= "_blank"
+              rel= "noreferrer"
+              download>
+                corrigé pdf 
+            </a>
+          </React.Fragment>)    
   };
 
   const validate = values => {
