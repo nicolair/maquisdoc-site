@@ -5,9 +5,9 @@ rang: 2
 ---
 ### Dépôts
 
-Par *dépôt*, on entend un dispositif organisé permettant des stocker des documents pédagogiques d'un même type. 
+Par *dépôt*, on entend un dispositif organisé par un *auteur* permettant des stocker des documents pédagogiques d'un même type. 
 
-Les dépôts sont les lieux où se passe le travail de rédaction. Chacun doit être libre de les organiser selon son choix.
+Les dépôts sont les lieux où se passe le travail de rédaction. Chaque *auteur* doit être libre de les organiser selon son choix.
 
 Cela inclut les outils de rédaction et le mode de stockage.
 

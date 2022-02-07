@@ -92,7 +92,8 @@ export default function Footer() {
                avec 
               <a href="https://www.gatsbyjs.com/"> Gatsby</a>, 
               <a href="https://graphql.org/"> GraphQL</a>, 
-              <a href="https://neo4j.com/"> Neo4j</a> 
+              <a href="https://neo4j.com/"> Neo4j</a> , 
+              <a href="https://github.com/aslushnikov/latex-online"> Latex-online </a>
             </Typography>
           </Box>
         </Grid>

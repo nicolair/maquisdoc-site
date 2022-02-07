@@ -22,7 +22,7 @@ Le vocabulaire présenté ici est valable dans toute la documentation.
 * **utilisateur**: une personne qui cherche des *documents* pour travailler avec.
 * **rédaction**: création ou modification d'un *document* dans un *dépôt*.
 * **publication**: processus qui permet à tout *utilisateur* d'accéder à un *document*.
-* **contextualisation** : processus qui permet de relier un *documents* à d'autres *documents*.
+* **contextualisation** : processus qui permet de relier les *documents* entre eux.
 * **maintenance** : actions à exécuter après une modification d'un *dépôt* pour conserver la cohérence du projet.
 
 #### Cycle de travail d'un auteur (workflow) 

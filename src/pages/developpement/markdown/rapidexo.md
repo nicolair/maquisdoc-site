@@ -36,7 +36,7 @@ Une fonction python qui renvoie une liste extraite aléatoirement:  random.sampl
 
     Returns a new list containing elements from the population while leaving the original population unchanged. The resulting list is in selection order so that all sub-slices will also be valid random samples. This allows raffle winners (the sample) to be partitioned into grand prize and second place winners (the subslices).
     
-Voir aussi en splice en javascript. 
+Voir aussi splice en javascript. 
     
 Les textes des exercices sont accessibles dans un projet GitHub.
 

@@ -5,6 +5,8 @@ import Layout from "../../components/layout"
 import LayoutVues from "../../components/layoutvues"
 import { useFormik } from "formik"
 import 'katex/dist/katex.min.css'
+import { usePromiseTracker, trackPromise } from "react-promise-tracker"
+import Loader from "react-loader-spinner"
 //import Latex from "react-latex-next"
 
 
@@ -20,31 +22,31 @@ const RapidexoPage = ({ data })=> {
   */
 //const flaskServerUrl = `http://127.0.0.1:5000`;
 //const flaskServerUrl = process.env.FLASK_URL
-const  flaskServerUrl = data.site.siteMetadata.servers.latexgithub.url
+  const  flaskServerUrl = data.site.siteMetadata.servers.latexgithub.url
 
-const latexonline = "https://latexonline.cc/compile?url="
+  const latexonline = "https://latexonline.cc/compile?url="
 
-const themes = {        
-   'Calcloc':{'nom':'Calcul local','nb':0},
-   'Courbpar':{'nom':'Courbes paramétrées','nb':0},
-   'Ctrigus':{'nom':'Calcul trigonométrique','nb':0},
-   'Deriv':{'nom':'Dérivation','nb':0},
-   'Equadiff':{'nom':'Équations differentielles','nb':0},
-   'Fracrat':{'nom':'Fractions rationnelles','nb':0},
-   'Geomel':{'nom':'Géométrie élémentaire','nb':0},
-   'Integ':{'nom':'Intégration','nb':0},
-   'LinMat':{'nom':'Matrices','nb':0},
-   'Lineuc':{'nom':'Algèbre linéaire euclidienne','nb':0},
-   'Polynom':{'nom':'Polynômes','nb':0},
-   'Systlin':{'nom':'Systèmes linéaires','nb':0},
-   'Vocens':{'nom':'Vocabulaire ensembliste','nb':0}
-}
-const themeslist = []
-const initval = {}
-for (let theme in themes){
+  const themes = {        
+    'Calcloc':{'nom':'Calcul local','nb':0},
+    'Courbpar':{'nom':'Courbes paramétrées','nb':0},
+    'Ctrigus':{'nom':'Calcul trigonométrique','nb':0},
+    'Deriv':{'nom':'Dérivation','nb':0},
+    'Equadiff':{'nom':'Équations differentielles','nb':0},
+    'Fracrat':{'nom':'Fractions rationnelles','nb':0},
+    'Geomel':{'nom':'Géométrie élémentaire','nb':0},
+    'Integ':{'nom':'Intégration','nb':0},
+    'LinMat':{'nom':'Matrices','nb':0},
+    'Lineuc':{'nom':'Algèbre linéaire euclidienne','nb':0},
+    'Polynom':{'nom':'Polynômes','nb':0},
+    'Systlin':{'nom':'Systèmes linéaires','nb':0},
+    'Vocens':{'nom':'Vocabulaire ensembliste','nb':0}
+  }
+  const themeslist = []
+  const initval = {}
+  for (let theme in themes){
     initval[theme] = themes[theme]['nb']
     themeslist.push(theme)
-}
+  }
 
   const [roleState,setRole] = useState(0)
   const [listeRefsState,setlisteRefs] = useState([])
@@ -80,13 +82,16 @@ for (let theme in themes){
   
   const fetchCOMPIL = data => {
       var getUrl = new URL(flaskServerUrl + '/getCOMPIL')
+      setRole('w')
+      //alert('coucou de getCOMPIL', roleState)
+      trackPromise(
       fetch( getUrl, {
           method: 'post',
           headers: {
               'Content-Type':'application/json'
           },
           body: JSON.stringify(listeRefsState)
-      })
+      }))
         .then(resp => resp.json())
         .then(function(resp){
            //console.log(resp['latex_urlstr']);
@@ -204,7 +209,7 @@ for (let theme in themes){
       )
         .then(response => response.text())
         .then(function(resp){
-           console.log(resp);
+           //console.log(resp);
            setLatex(resp)
           })
          .catch(function(error){
@@ -278,6 +283,24 @@ for (let theme in themes){
             </button>
         )
   };
+  
+  const CompilIndicator = props => {
+      const { promiseInProgress } = usePromiseTracker();
+      return (
+          promiseInProgress &&
+          <div
+            style={{
+              width: "100%",
+              height: "100",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}>
+           {/*<Loader type="ThreeDots" color="#2BAD60" height="100" width="100" />*/}
+           Compilation ... Création des liens ... C'est assez long ...
+          </div>
+      );    
+  };
       
   return (
     <Layout>
@@ -294,6 +317,7 @@ for (let theme in themes){
         <p>Cette vue permet de former des listes de 30 petits exercices techniques ("rapidexos") à traiter en une heure.</p>
         {themesINPUT(roleState === 0)}
         {listeMENU(roleState > 0)}
+        <CompilIndicator/>
       </div>
     </LayoutVues>
     </Layout> 
