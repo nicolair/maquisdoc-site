@@ -6,8 +6,27 @@ import LayoutVues from "../../components/layoutvues"
 import { useFormik } from "formik"
 import 'katex/dist/katex.min.css'
 import { usePromiseTracker, trackPromise } from "react-promise-tracker"
-import Loader from "react-loader-spinner"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import {ThreeDots} from "react-loader-spinner"
 //import Latex from "react-latex-next"
+
+  export const CompilIndicator = props => {
+      const { promiseInProgress } = usePromiseTracker();
+      return (
+          promiseInProgress &&
+          <div
+            style={{
+              width: "100%",
+              height: "100",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}>
+            Compilation ... Création des liens ... C'est assez long ... &nbsp; 
+            <ThreeDots color="darkgreen" height="50" width="50" />
+          </div>
+      );    
+  };
 
 
 const RapidexoPage = ({ data })=> {
@@ -284,23 +303,6 @@ const RapidexoPage = ({ data })=> {
         )
   };
   
-  const CompilIndicator = props => {
-      const { promiseInProgress } = usePromiseTracker();
-      return (
-          promiseInProgress &&
-          <div
-            style={{
-              width: "100%",
-              height: "100",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center"
-            }}>
-           {/*<Loader type="ThreeDots" color="#2BAD60" height="100" width="100" />*/}
-           Compilation ... Création des liens ... C'est assez long ...
-          </div>
-      );    
-  };
       
   return (
     <Layout>
