@@ -4,11 +4,10 @@ import { graphql } from "gatsby"
 import Layout from "../../components/layout"
 import LayoutVues from "../../components/layoutvues"
 import { useFormik } from "formik"
-import 'katex/dist/katex.min.css'
 import { usePromiseTracker, trackPromise } from "react-promise-tracker"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import {ThreeDots} from "react-loader-spinner"
-//import Latex from "react-latex-next"
+import LatexBlock from "../../components/latexblock"
 
   export const CompilIndicator = props => {
       const { promiseInProgress } = usePromiseTracker();
@@ -271,11 +270,14 @@ const RapidexoPage = ({ data })=> {
         return (
           <div>
             <p>Visualisation des 30 exercices un par un</p>
-            <p> Cette vue est encore en développement, le code Latex devrait être compilé dans la page.</p>
-            <p>Exercice numéro {numState}: {listeRefs[numState]}
-            <div> {latexState} </div>
-            {/*<RapidexoLatex code='$e^x$'/>*/}
+            <p>Exercice numéro {numState}: {listeRefs[numState]}</p>
+            <LatexBlock latex={latexState}/>
+            &nbsp;
+            <p> 
+              <small> Cette vue est encore en développement. Comme la compilation en html n'est pas toujours correcte, le code Latex est présenté au dessous</small> <br/>
+              <small> {latexState} </small>
             </p>
+            
             <button onClick={suiv}> Suivant </button>
             <button onClick={prec}> Précédent </button>
             
