@@ -11,9 +11,10 @@ const ConceptPage = ({ data, pageContext}) => {
         <LayoutVues>
         <h3> Vue d'un concept </h3>
         <p>Littéral : {concept.litteral} </p>
-        <p>Concepts voisins :
-        </p>
         <table>
+          <caption>
+            Concepts voisins
+          </caption>
           <tbody>
             {concept.conceptsvoisins.map(({conceptLitteral,out,typeRel,conceptId},index)=>(
               <tr key={index}>
@@ -40,22 +41,24 @@ const ConceptPage = ({ data, pageContext}) => {
             ))}
           </tbody>
         </table>
-        <p>Documents voisins :
-        </p>
         <table>
+          <caption>
+            Documents voisins
+          </caption>
           <tbody>
-            {concept.documentsvoisins.map(({typeRel,out,docTitre,docId},index)=>(
+            {concept.documentsvoisins.map(({typeRel,out,docType,docTitre,docId},index)=>(
               <tr key={index}>
                 <td>
                   {out ?
                       concept.litteral:
                       <Link
                           css={css`color: darkgreen;`}
-                          to={"/document_"+docId}>
+                          to={"/document_" + docId}>
                         {docTitre}
                       </Link>
                   }
                 </td>
+                <td> {docType} </td>
                 <td>{typeRel}</td>
                 <td>
                   {out ? 

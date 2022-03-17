@@ -1,6 +1,6 @@
 ---
 theme: "journal"
-title: "vues relatives aux documents de cours"
+title: "vue 'Cours'"
 date: "2021-02-18"
 ---
 Ces vues sont analogues à celles pour les problèmes.

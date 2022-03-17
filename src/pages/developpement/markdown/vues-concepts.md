@@ -1,6 +1,6 @@
 ---
 theme: "journal"
-title: "vues relatives aux concepts"
+title: "vue 'Concepts'"
 date: "2021-02-20"
 ---
 Un "`Concept`" est un type de noeud du maquis qui représente un concept relatif à une discipline (mathématique, informatique). Il est caractérisé par une chaîne de caractère: son "*litteral*". Dans maquisdoc, les autres types de noeuds sont "`Document`", "`Evenement`" et "`SiteWeb`" (voir la page [neo4j: schéma](https://maquisdoc-site-rpz2m.ondigitalocean.app/developpement/markdown/neo4j-schema/) du journal de développement).

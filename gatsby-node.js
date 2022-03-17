@@ -77,6 +77,17 @@ exports.createPages = async ({ graphql, actions }) => {
             description
           }
         }
+        exercicedocuments(orderBy: titre_asc) {
+          _id
+          titre
+          description
+          url
+          urlSrc
+          conceptsEVAL{
+           _id
+           litteral
+          }
+        }
         Concept(orderBy: litteral_asc) {
           litteral
           discipline
@@ -88,7 +99,7 @@ exports.createPages = async ({ graphql, actions }) => {
             conceptLitteral
             conceptId
           }
-          documentsvoisins {
+          documentsvoisins(orderBy: docTitre_asc) {
             typeRel
             out
             docType
@@ -161,12 +172,25 @@ exports.createPages = async ({ graphql, actions }) => {
         }      
     })
   })
+
+  const lexercices =      result.data.maquis.exercicedocuments
+  lexercices.forEach((exo,index) => {
+    ({titre,description,url,urlSrc,conceptsEVAL,_id} = exo)
+    const slug = "document_"+_id
+    createPage({
+        path: slug,
+        component: path.resolve(`./src/templates/exercice-page.js`),
+        context: {
+            exo
+        }      
+    })
+  })
+  
   
   const ldefautdocuments = result.data.maquis.Document
   ldefautdocuments.forEach((doc,index) => {
     ({titre, description,url,typeDoc,_id} = doc)
-    const defautTypes = ["liste exercices","liste rapidexo",
-      "exercice", "livre problèmes", "livre", "programme",
+    const defautTypes = ["liste exercices","liste rapidexo", "livre problèmes", "livre", "programme",
       "sujet dossier ADS","article scientifique"]
     if (defautTypes.includes(typeDoc)){
           const slug =  "document_"+_id
@@ -179,7 +203,6 @@ exports.createPages = async ({ graphql, actions }) => {
           })
     }
   })
-  
   
   const lconcepts = result.data.maquis.Concept
   lconcepts.forEach((concept,index) => {

@@ -8,6 +8,8 @@ const echapp = latex => {
     ch = ch.replace(/{\\'e}/g,'é')
     ch = ch.replace(/\\'e/g,'é')
     ch = ch.replace(/\\'E/g,'É')
+    ch = ch.replace(/\\'{E}/g,'É')
+    ch = ch.replace(/{\\'E}/g,'É')
     ch = ch.replace(/\\'{e}/g,'é')
     ch = ch.replace(/{\\`a}/g,'à')
     ch = ch.replace(/\\`a/g,'à')

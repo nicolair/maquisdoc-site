@@ -1,6 +1,6 @@
 ---
 theme: "journal"
-title: "vue rapidexo"
+title: "vue 'Rapidexos'"
 date: "2022-02-18"
 ---
 

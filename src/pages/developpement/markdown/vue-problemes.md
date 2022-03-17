@@ -1,6 +1,6 @@
 ---
 theme: "journal"
-title: "vues relatives aux problèmes"
+title: "vue 'Problèmes'"
 date: "2021-01-20"
 ---
 L'accès aux problèmes se fait par diverses vues:

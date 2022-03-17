@@ -10,21 +10,30 @@ const CoursPage = ({ data, pageContext}) => {
     return (
         <Layout>
         <LayoutVues>
-        <h3> Vue document de cours </h3>
-        <p>Titre : {cours.titre } 
-        <a href={cours.url} 
+        <h3> Vue d'un document de cours </h3>
+        <p>Titre : {cours.titre } </p>
+        <p>
+          <a href={cours.url} 
                target="_blank"
                rel="noopener noreferrer">
-            <small> ( pdf ) </small></a>
+             Document pdf
+          </a>
         </p>
-        <p>Concepts documentés : 
-         {concepts.map(({litteral, _id}) => 
-            <Link
-                css={css`color: darkgreen;`}
-                to={"/concept_" + _id}>
-              {litteral}   
-            </Link> )}
-        </p>
+        <table>
+          <caption>Concepts documentés </caption>
+          <tbody>
+            {concepts.map(({litteral, _id},index) => 
+              <tr key={index}>
+                <td>
+                  <Link
+                    css={css`color: darkgreen;`}
+                    to={"/concept_" + _id}>
+                    {litteral}   
+                  </Link> 
+                </td>
+              </tr>)}
+          </tbody>
+        </table>
         </LayoutVues>
         </Layout>
     )
