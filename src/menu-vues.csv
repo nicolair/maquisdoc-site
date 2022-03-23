@@ -1,6 +1,6 @@
 code,texte,page
 pbs,Problèmes,/vues/problemes
-exo,Exercices,/vues/feuilles/
+exo,Exercices,/vues/feuillesexercices/
 crs,Cours,/vues/listecours/
 rpdexo,Rapidexos,/vues/rapidexo/
 mpsi,Une année en mpsi,/semaine_1/

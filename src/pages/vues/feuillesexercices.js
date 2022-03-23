@@ -1,19 +1,18 @@
-// obsolete, remplacé par feuillesexercices.js
 import React from "react"
 import { css } from "@emotion/core"
 import { graphql } from "gatsby"
-//import { rhythm } from "../utils/typography"
+import { Link } from "gatsby"
 import Layout from "../../components/layout"
 import LayoutVues from "../../components/layoutvues"
 
-export default function feuilles({ data }) {
+export default function feuillesexercices({ data }) {
   console.log(data)
   
   return (
     <Layout>
     <LayoutVues>
       <div>
-        <h3>Thèmes d'exercices</h3>
+        <h3> Thèmes d'exercices </h3>
         <table>
           <thead>
             <tr>
@@ -23,24 +22,33 @@ export default function feuilles({ data }) {
             </tr>
           </thead>
           <tbody>
-            {data.allCodesCsv.edges.map(({ node }, index) => (
+            {data.maquis.Document.map(( feuille , index) => (
               <tr key={index}>
-                <td>{node.theme}</td>
+                <td>{feuille.titre}</td>
                 <td>
                   <a
                     css={css`
                       color: darkgreen;
                     `}
-                    href = { data.site.siteMetadata.math_exos.url_diff  +  'A_' + node.code + '.pdf'} 
+                    href = { feuille.url} 
                     target="_blank" rel="noopener noreferrer">
                     feuille pdf 
                   </a>
                 </td>
-                <td> concept</td>
+                <td> 
+                  <Link 
+                    css={css`color: darkgreen;`}
+                    to= {"/concept_"+feuille.conceptsEVAL[0]._id}>
+                    concept
+                  </Link> 
+
+                </td>
               </tr>
              ))}
           </tbody>
+
         </table>
+
       </div>
     </LayoutVues>
     </Layout>
@@ -48,20 +56,16 @@ export default function feuilles({ data }) {
 }
 
 export const query = graphql`
-  query {
-    allCodesCsv {
-      edges {
-        node {
-          code
-          theme
+  query{
+    maquis {
+      Document(typeDoc: "liste exercices",
+               orderBy: titre_asc) {
+        titre
+        conceptsEVAL {
+          _id
+          litteral
         }
-      }
-    }
-    site {
-      siteMetadata {
-        math_exos {
-          url_diff
-        }
+        url
       }
     }
   }

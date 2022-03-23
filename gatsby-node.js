@@ -108,8 +108,16 @@ exports.createPages = async ({ graphql, actions }) => {
             docId
           }
         }
+        feuilleexercicesdocuments(orderBy: titre_asc) {
+          titre
+          _id
+          url
+          conceptsEVAL{
+            _id
+          }
+        }
       }
-    }  
+    }
   `)
 
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
@@ -190,7 +198,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const ldefautdocuments = result.data.maquis.Document
   ldefautdocuments.forEach((doc,index) => {
     ({titre, description,url,typeDoc,_id} = doc)
-    const defautTypes = ["liste exercices","liste rapidexo", "livre problèmes", "livre", "programme",
+    const defautTypes = [ "livre problèmes", "livre", "programme", "liste rapidexo",
       "sujet dossier ADS","article scientifique"]
     if (defautTypes.includes(typeDoc)){
           const slug =  "document_"+_id
@@ -213,6 +221,19 @@ exports.createPages = async ({ graphql, actions }) => {
         component: path.resolve(`./src/templates/concept-page.js`),
         context: {
             concept
+        }      
+    })
+  })
+  
+  const lfeuilleexos = result.data.maquis.feuilleexercicesdocuments
+  lfeuilleexos.forEach((feuilleexo,index) => {
+    ({titre,_id,conceptsEVAL} = feuilleexo)
+    const slug = "document_" + _id
+    createPage({
+        path: slug,
+        component: path.resolve(`./src/templates/feuilleexo-page.js`),
+        context: {
+            feuilleexo
         }      
     })
   })

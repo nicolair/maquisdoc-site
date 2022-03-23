@@ -10,6 +10,7 @@ const DefDocPage = ({ data, pageContext}) => {
         <Layout>
         <LayoutVues>
         <h3> Vue document par défaut </h3>
+        <p>Ce type de document n'a pas encore de page spécifique.</p>
         <p>Titre : {doc.titre } </p>
         <p> Type de document: {doc.typeDoc}</p>
         <p>
