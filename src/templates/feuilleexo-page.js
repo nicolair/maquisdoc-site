@@ -16,7 +16,7 @@ const FeuilleExoPage = ({ data, pageContext}) => {
     ))
     const nbexos = exosvoisins.length
     const [indexexoState,setindexexo] = useState(0)
-    console.log(exosvoisins[indexexoState].docUrl)
+    // console.log(exosvoisins[indexexoState].docUrl)
     const suiv = num => {
       setindexexo((num) => (num + 1) % nbexos)
     }
