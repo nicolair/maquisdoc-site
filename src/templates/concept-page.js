@@ -46,7 +46,7 @@ const ConceptPage = ({ data, pageContext}) => {
             Documents voisins
           </caption>
           <tbody>
-            {concept.documentsvoisins.map(({typeRel,out,docType,docTitre,docId},index)=>(
+            {concept.documentsvoisins.map(({typeRel,out,docType,docTitre,docId,docUrl},index)=>(
               <tr key={index}>
                 <td>
                   {out ?
@@ -59,7 +59,7 @@ const ConceptPage = ({ data, pageContext}) => {
                   }
                 </td>
                 <td> {docType} </td>
-                <td>{typeRel}</td>
+                <td>{typeRel} </td>
                 <td>
                   {out ? 
                       <Link

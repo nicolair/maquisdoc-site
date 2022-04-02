@@ -114,6 +114,13 @@ exports.createPages = async ({ graphql, actions }) => {
           url
           conceptsEVAL{
             _id
+            documentsvoisins {
+              typeRel
+              docType
+              docTitre
+              docId
+              docUrl
+            }
           }
         }
       }

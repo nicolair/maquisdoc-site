@@ -12,11 +12,12 @@ export default function feuillesexercices({ data }) {
     <Layout>
     <LayoutVues>
       <div>
-        <h3> Thèmes d'exercices </h3>
+        <h3> Feuilles d'exercices </h3>
         <table>
           <thead>
             <tr>
               <th>Thème</th>
+              <th>Image</th>
               <th>Feuille</th>
               <th>Concept</th>
             </tr>
@@ -32,16 +33,23 @@ export default function feuillesexercices({ data }) {
                     `}
                     href = { feuille.url} 
                     target="_blank" rel="noopener noreferrer">
-                    feuille pdf 
+                     pdf 
                   </a>
+                </td>
+                <td>
+                  <Link 
+                    css={css`color: darkgreen;`}
+                    to= {"/document_" + feuille._id}>
+                    détail
+                  </Link> 
+
                 </td>
                 <td> 
                   <Link 
                     css={css`color: darkgreen;`}
-                    to= {"/concept_"+feuille.conceptsEVAL[0]._id}>
+                    to= {"/concept_" + feuille.conceptsEVAL[0]._id}>
                     concept
                   </Link> 
-
                 </td>
               </tr>
              ))}
@@ -61,6 +69,7 @@ export const query = graphql`
       Document(typeDoc: "liste exercices",
                orderBy: titre_asc) {
         titre
+        _id
         conceptsEVAL {
           _id
           litteral
