@@ -6,6 +6,23 @@ import LayoutVues from "../components/layoutvues"
 
 const ConceptPage = ({ data, pageContext}) => {
     const concept = pageContext.concept
+    const conceptsvoisins = concept.conceptsvoisins
+    conceptsvoisins.sort((ca,cb)=>{
+      if (ca.conceptLitteral <= cb.conceptLitteral)
+        return -1
+      else
+        return 1
+    })
+    const docsvoisins = concept.documentsvoisins
+    docsvoisins.sort((doca,docb) =>{
+      if (doca.typeRel < docb.typeRel)
+        {return -1}
+      else if ((doca.typeRel = docb.typeRel) && (doca.docTitre < docb.docTitre))
+        {return -1}
+      else 
+        {return 1} 
+    })
+    console.log(conceptsvoisins)
     return (
         <Layout>
         <LayoutVues>
@@ -16,7 +33,7 @@ const ConceptPage = ({ data, pageContext}) => {
             Concepts voisins
           </caption>
           <tbody>
-            {concept.conceptsvoisins.map(({conceptLitteral,out,typeRel,conceptId},index)=>(
+            {conceptsvoisins.map(({conceptLitteral,out,typeRel,conceptId},index)=>(
               <tr key={index}>
                 <td>{out ? 
                         concept.litteral :
@@ -46,7 +63,7 @@ const ConceptPage = ({ data, pageContext}) => {
             Documents voisins
           </caption>
           <tbody>
-            {concept.documentsvoisins.map(({typeRel,out,docType,docTitre,docId,docUrl},index)=>(
+            {docsvoisins.map(({typeRel,out,docType,docTitre,docId,docUrl},index)=>(
               <tr key={index}>
                 <td>
                   {out ?
