@@ -14,7 +14,14 @@ const ProblemePage = ({ data, pageContext}) => {
         <p> <a href={probleme.url} 
                target="_blank"
                rel="noopener noreferrer">
-            lien</a>
+            pdf</a> &nbsp;
+            Sources: <a href={probleme.urlSrcEnon} 
+               target="_blank"
+               rel="noopener noreferrer">
+            énoncé</a>, <a href={probleme.urlSrcCorr} 
+               target="_blank"
+               rel="noopener noreferrer">
+            corrigé</a>
         </p>
         <p>utilisations:
          {utilisations.map(({nom})=> ' ' + nom)}

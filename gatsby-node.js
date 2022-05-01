@@ -61,6 +61,8 @@ exports.createPages = async ({ graphql, actions }) => {
           titre
           description
           url
+          urlSrcEnon
+          urlSrcCorr
           evenements {
             nom
           }
