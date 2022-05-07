@@ -84,10 +84,15 @@ exports.createPages = async ({ graphql, actions }) => {
           titre
           description
           url
-          urlSrc
+          urlSrcEnon
+          urlSrcCorr
           conceptsEVAL{
            _id
            litteral
+          }
+          contenants{
+            _id
+            titre
           }
         }
         Concept(orderBy: litteral_asc) {

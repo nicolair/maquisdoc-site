@@ -7,11 +7,16 @@ import LayoutVues from "../components/layoutvues"
 
 const ExercicePage = ({ data, pageContext}) => {
     const exo = pageContext.exo
+    //console.log(exo)
     return (
         <Layout>
         <LayoutVues>
-        <h3> Vue exercice </h3>
+        <h3> Vue d'un exercice </h3>
         <p>Titre : {exo.titre } </p>
+        <p>Sources: <a href={exo.urlSrcEnon} 
+               target="_blank"
+               rel="noopener noreferrer">
+            énoncé</a> </p>
         <table>
           <caption>
             Concepts évalués
@@ -24,6 +29,24 @@ const ExercicePage = ({ data, pageContext}) => {
                         css={css`color: darkgreen;`}
                         to={"/concept_" + _id}>
                     {litteral}
+                  </Link>
+                </td>
+              </tr>    
+            ))}
+          </tbody>
+        </table>
+        <table>
+          <caption>
+            Documents contenant cet exercice
+          </caption>
+          <tbody>
+            {exo.contenants.map(({titre,_id},index)=>(
+              <tr key={index}>
+                <td>
+                  <Link
+                        css={css`color: darkgreen;`}
+                        to={"/document_" + _id}>
+                    {titre}
                   </Link>
                 </td>
               </tr>    
