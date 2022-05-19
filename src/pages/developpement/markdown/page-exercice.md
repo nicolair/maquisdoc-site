@@ -1,6 +1,6 @@
 ---
 theme: "journal"
-title: "pages 'Exercice'"
+title: "vue 'Exercice'"
 date: "2022-05-07"
 ---
 Les pages 'Vue d'un exercice' présentent des informations sur un exercice particulier notemment le texte compilé en html et un lien vers la source LateX.  

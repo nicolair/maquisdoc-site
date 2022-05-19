@@ -4,6 +4,14 @@ title: Maintenance
 rang: 3
 ---
 ### Maintenance d'un dépôt
+Un dépôt est un dossier (système de fichiers) local personnel à un auteur. Certains de ces fichiers sont des sources traitées par divers scripts de *compilation* (Latex, Asymptote, Python) et d'autes des images ou des produits annexes des compilations.  
+Des aspects du dépôt sont présentés sur des serveurs web accessibles à tous (GitHub, espace de diffusion, base de données en graphe).  
+Un dépôt étant modifié par le travail local de l'auteur, il s'agit de maintenir sa cohérence avec les reflets distants diffusés.
+
+
+Des **conventions de nommage** sont fixées pour divers types de fichiers. Elles sont repèrées par des expressions régulières auxquelles sont associées des scripts de maintenance.  
+La maintenance consiste donc à scanner les fichiers et exécuter les scripts pour ceux qui vérifient les expressiosn régulières. 
+
 
 Les dépôts actuels sont structurés par:
 * stockage: système de fichiers

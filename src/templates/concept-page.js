@@ -68,22 +68,27 @@ const ConceptPage = ({ data, pageContext}) => {
                 <td>
                   {out ?
                       concept.litteral:
-                      <Link
+                      <div>
+                        {docType} &nbsp; 
+                        <Link
                           css={css`color: darkgreen;`}
                           to={"/document_" + docId}>
-                        {docTitre}
-                      </Link>
+                          {docTitre}
+                        </Link>
+                      </div>
                   }
                 </td>
-                <td> {docType} </td>
                 <td>{typeRel} </td>
                 <td>
-                  {out ? 
-                      <Link
+                  {out ?
+                      <div>
+                        {docType} &nbsp;
+                        <Link
                           css={css`color: darkgreen;`}
                           to={"/document_"+docId}>
-                        {docTitre}
-                      </Link>:
+                          {docTitre}
+                        </Link> 
+                      </div>:
                       concept.litteral
                   }  
                 </td>
